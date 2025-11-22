@@ -1,0 +1,910 @@
+/* style.css (Revisi Total untuk Mirip Gambar Asli) */
+
+/* --- Warna Dasar (Ditemukan dari Analisis Gambar) --- */
+:root {
+    --color-hero-bg: #33576a;     /* Biru Tua Hero Section */
+    --color-hero-text: #fcfc34;   /* Kuning Emas Judul */
+    --color-text: #fff;        /* Abu-abu gelap untuk teks umum */
+    --color-primary: #33576a; /* Biru Tua/Gelap untuk teks utama/icon */
+    --color-accent: #fcfc34;  /* Kuning Emas untuk highlight */
+    --color-bg-card: #f8f8f8; /* Background Card (Mirip putih keabuan) */
+    --color-text-light: #fff;
+    --color-bg-sosmed: #e0e0e0; /* Background icon sosmed */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%; 
+    max-width: 1400px;
+    margin: 0 auto; 
+}
+
+/* -------------------------------------- */
+/* 1. MAIN HEADER (NAVIGASI) */
+/* -------------------------------------- */
+.main-header {
+      background: linear-gradient(
+        /* Gradien dari Kiri ke Kanan */
+        to right, 
+        #a9a97f 0%,       /* Warna 1: Abu-abu Kehijauan Muda (Mulai dari kiri) */
+        #3f3e49 100%      /* Warna 2: Ungu/Abu-abu Gelap (Berakhir di kanan) */
+    );
+    
+    /* UBAH PADDING VERTIKAL DI SINI */
+    padding: 15px 0; /* Padding atas dan bawah 15px (sebelumnya mungkin 10px) */
+    
+    position: relative; 
+    z-index: 100; 
+}
+
+/* style.css (Perbaikan Ukuran Logo Header) */
+.header-title {
+    /* Atur font, ukuran, dan margin */
+    font-size: 24px; /* Sesuaikan ukuran font */
+    color: white;   /* Sesuaikan warna font */
+    margin: 0 15px; /* Beri jarak sedikit dari logo (kiri) dan menu (kanan) */
+    font-weight: bold;
+    
+    /* Penting jika navbar menggunakan Flexbox dan kamu ingin title mengambil ruang minimal */
+    /* flex-grow: 0; */
+}
+
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    margin-right: auto; 
+    
+    /* --- TAMBAHAN INI UNTUK MENGGESER KE KANAN --- */
+    padding-left: 20px; /* Sesuaikan nilai 20px sesuai kebutuhan jarak */
+    /* --- AKHIR TAMBAHAN --- */
+}
+.header-logo {
+    /* Atur ukuran logo agar proporsional */
+    height: 60px; /* Tinggi yang ideal untuk navigasi */
+    width: auto;  /* Lebar menyesuaikan proporsi tinggi */
+    margin-right: 10px;
+    /* Tambahkan margin jika diperlukan agar tidak terlalu mepet ke kiri */
+    margin-left: 10px; 
+}
+
+.main-header .header-logo {
+    /* MENGGUNAKAN !important untuk memaksa prioritas. Hapus ini setelah debugging */
+    height: 60px !important; 
+    width: auto !important;  
+     /* Tambahkan properti FILTER ini */
+    filter: invert(1) grayscale(1) brightness(2);
+    margin-left: 10px; /* Jaga margin */
+}
+.main-header img:hover {
+    /* Filter untuk mengubah warna dari Putih ke Orange/Kuning (#ffb800) */
+    /* Nilai filter ini dihitung untuk warna spesifik (#ffb800) */
+    filter: invert(72%) sepia(35%) saturate(3015%) hue-rotate(345deg) brightness(101%) contrast(101%);
+    
+    /* Ganti kode di atas dengan yang lebih sederhana ini jika yang di atas tidak akurat:
+    filter: sepia(1) saturate(20) hue-rotate(30deg); 
+    */
+    
+    cursor: pointer; /* Menunjukkan bahwa elemen bisa diklik */
+}
+
+
+/* ... CSS lainnya ... */
+/* style.css (Revisi Navigasi) */
+
+/* 1. MAIN HEADER (NAVIGASI) */
+.navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; /* PENTING: Menjaga semua item di tengah vertikal */
+    padding: 0 5%;
+}
+
+/* Geser Menu ke Kiri (dengan mengurangi margin) */
+.nav-links a {
+    color: #fff; 
+    text-decoration: none;
+    
+    /* FONT SIZE DESKTOP (DIPASTIKAN DI SINI) */
+    font-size: 1.3em; 
+    font-weight: bold;
+    
+    /* SPACING DESKTOP */
+    margin-left: 25px; 
+    padding: 5px 0;
+    
+    /* HOVER DESKTOP */
+    transition: color 0.3s ease; 
+}
+
+/* Efek Hover di Desktop */
+.nav-links a:hover {
+    color: var(--color-accent); /* Warna Kuning Emas (#ffb800) saat di-hover */
+}
+
+/* -------------------------------------- */
+/* HAMBURGER MENU STYLING (HANYA DI HP) */
+/* -------------------------------------- */
+
+.menu-toggle {
+    display: none; /* Sembunyikan tombol secara default di desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 200;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #fff; /* Warna putih */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Aturan Responsif untuk Mobile */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Tampilkan tombol Hamburger di HP */
+    }
+
+    .nav-links {
+        /* Sembunyikan menu di HP saat default */
+        display: none; 
+        
+        /* Tata letak menu full screen/sidebar saat terbuka */
+        position: absolute;
+        top: 60px; /* Di bawah header */
+        left: 0;
+        width: 100%;
+        background-color: var(--color-navbar); /* Warna latar belakang menu */
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-links.active {
+        display: flex; /* Tampilkan menu saat kelas 'active' ditambahkan JS */
+    }
+
+   .nav-links a {
+        margin: 15px 0; 
+        font-size: 1.4em; /* Sedikit diperbesar di mobile */
+        color: #fff; /* Pastikan teks putih di mobile */
+        width: 100%; /* Agar bisa di-hover di seluruh lebar menu */
+        display: block;
+        padding: 10px 0;
+    }
+
+    .main-header .navbar .nav-links a {
+    font-weight: bold; /* Tambah bold agar lebih terlihat */
+    font-size: 1.3em;
+    padding: 10px 0;
+}
+
+.nav-links a:hover {
+        background-color: rgba(255, 184, 0, 0.2); /* Background Kuning Transparan saat di-hover */
+        color: var(--color-accent); /* Teks Kuning Emas */
+    }
+}
+/* -------------------------------------- */
+/* 2. HERO SECTION */
+/* -------------------------------------- */
+.hero-section {
+       background: linear-gradient(
+        /* Gradien dari Kiri ke Kanan */
+        to right, 
+        #a9a97f 0%,       /* Warna 1: Abu-abu Kehijauan Muda (Mulai dari kiri) */
+        #3f3e49 100%      /* Warna 2: Ungu/Abu-abu Gelap (Berakhir di kanan) */
+    );
+    height: 450px; /* Tinggi disesuaikan */
+    position: relative; 
+    overflow: hidden; 
+
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start; 
+    padding-left: 8%; 
+}
+
+/* Container Utama: Memusatkan semua konten */
+.hero-banner {
+    /* Background (atur sesuai warna biru gelap website kamu) */
+   
+    padding: 60px 20px; /* Jarak atas dan bawah */
+    
+    /* Memusatkan semua teks dan elemen di dalamnya secara horizontal */
+    text-align: center; 
+}
+
+/* 1. Styling Logo/Ikon */
+.banner-logo-container {
+    padding: 5px;
+    border: 1px solid #3d4a61; /* Border tipis, warna sedikit lebih terang */
+    border-radius: 50%; /* Membuat border bundar */
+    display: inline-block; /* Agar border hanya mengelilingi logo */
+    margin-bottom: 25px; /* Jarak antara logo dan judul */
+}
+
+.banner-logo {
+    width: 60px; /* Ukuran ikon */
+    height: 60px;
+    display: block;
+}
+
+/* 2. Styling Judul Utama */
+.banner-title {
+    color: #ffffff; /* Warna teks putih */
+    font-size: 3.5em; /* Ukuran besar (sesuaikan) */
+    font-weight: 700; /* Tebal */
+    margin-top: 0;
+    margin-bottom: 15px; /* Jarak ke sub-judul */
+}
+
+/* 3. Styling Sub-judul/Tagline */
+.banner-tagline {
+    color: #fff; /* Warna teks abu-abu muda */
+    font-size: 1.25em; /* Ukuran lebih kecil dari judul */
+    font-weight: 400; /* Normal */
+    margin: 0;
+}
+
+.hero-content {
+    /* Hanya untuk memastikan h1 tidak terpengaruh padding lain */
+    padding: 0; 
+}
+
+.hero-section h1 {
+    font-family: 'Arial Black', Gadget, sans-serif; /* Font Bold/Berat */
+    font-size: 4em; /* Ukuran teks */
+    color: var(--color-hero-text); 
+    font-weight: 900;
+    margin: 0; 
+    /* Efek bayangan seperti di gambar */
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+}
+
+/* Styling Gelombang SVG (Pemisah Putih) */
+.wave-divider {
+    position: absolute;
+    bottom: -1px; 
+    left: 0;
+    width: 100%;
+    height: 150px; /* TINGGI DISESUAIKAN UNTUK GELOMBANG BARU */
+    z-index: 1; 
+}
+
+.wave-divider path {
+    /* Hapus filter drop-shadow yang menyebabkan efek abu-abu */
+    /* filter: drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.05)); */ 
+    /* ATAU, jika tetap ingin bayangan tapi tidak di atas, 
+       bisa diatur manual untuk bayangan ke bawah saja */
+    /* Untuk sementara, kita hapus dulu agar putih bersih */
+    filter: none; /* Hapus semua filter */
+}
+.wave-divider circle {
+    filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.08));
+}
+/* -------------------------------------- */
+/* 3. KONTEN UTAMA (ABOUT US) */
+/* -------------------------------------- */
+
+.content-section {
+    padding: 50px 0;
+    width: 80%;
+    max-width: 1000px; /* Batasi lebar teks agar mudah dibaca */
+    margin: 0 auto; 
+}
+
+.content-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: var(--color-text);
+    text-align: center;
+}
+
+/* Untuk konten About Us (Logo Besar + Teks) */
+.about-content {
+    display: flex; 
+    align-items: flex-start;
+    gap: 40px; /* Jarak antara logo dan teks */
+    text-align: left;
+}
+
+.main-logo {
+    width: 250px; 
+    flex-shrink: 0; 
+    margin-top: 20px;
+}
+
+.about-content p {
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* style.css (Lanjutan) */
+
+/* -------------------------------------- */
+/* 4. FOOTER */
+/* -------------------------------------- */
+.main-footer {
+    background-color: #000; /* Warna Biru Tua Hero Section */
+    color: #fff;
+    padding: 40px 0 20px 0; /* Jarak atas lebih besar */
+    text-align: center;
+}
+
+.footer-content {
+    /* Pastikan semua elemen di tengah */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* style.css (Revisi Garis Separator Footer) */
+
+.footer-separator {
+    width: 90%;
+    max-width: 1000px;
+    
+    /* Ganti nilai di bawah ini: */
+    height: 2px; /* Ditebalkan dari 1px menjadi 2px */
+    background-color: rgba(255, 255, 255, 0.5); /* Dibuat lebih solid (opacity 0.5) */
+    
+    margin-bottom: 25px; /* Tambah jarak bawah sedikit */
+}
+
+.footer-logo {
+    width: 80px; /* Ukuran Logo Burung di Footer */
+    height: auto;
+    margin-bottom: 15px;
+      /* MENGGUNAKAN !important untuk memaksa prioritas. Hapus ini setelah debugging */
+    height: 60px !important; 
+    width: auto !important;  
+     /* Tambahkan properti FILTER ini */
+    filter: invert(1) grayscale(1) brightness(2);
+    margin-left: 10px; /* Jaga margin */
+}
+
+.social-icons {
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 1.5em; /* Ukuran ikon */
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--color-hero-text); /* Beri efek warna kuning saat di hover */
+}
+
+.footer-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #f0f0f0; /* Sedikit lebih terang dari putih */
+}
+
+.footer-copyright {
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.7); /* Teks copyright sedikit transparan */
+    margin-top: 20px;
+}
+
+.about-container {
+    display: flex; /* Aktifkan Flexbox untuk foto dan konten */
+    max-width: 1000px;
+    gap: 50px;
+    padding: 50px 0;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+/* KIRI: Foto (di desktop) */
+.about-photo-wrapper {
+    flex: 0 0 300px; /* Lebar tetap untuk foto */
+    padding-top: 10px; /* Agar foto sejajar dengan baris pertama teks */
+}
+
+.profile-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Posisi foto akan diatur ulang di media query agar terlihat di kiri */
+}
+
+/* KANAN: Konten Utama (Judul, Teks, Cards, Sosmed) */
+.about-content-wrapper {
+    flex-grow: 1;
+}
+
+/* Judul dan Teks (Semua teks kecuali card harus sejajar kiri) */
+.main-title-about {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.intro-text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: var(--color-text-light);
+}
+
+/* Styling Info Cards */
+.info-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom di desktop */
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* style.css (Perbaikan Info Card Hover) */
+
+.info-card {
+    /* ... properti sebelumnya ... */
+    background-color: var(--color-bg-card); 
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    
+    /* Tambahkan atau ubah properti Transisi */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none; /* Hapus border 1px solid #eee jika masih ada */
+}
+
+/* Efek Hover: Nge-zoom dan Shadow Kuning */
+.info-card:hover {
+    transform: scale(1.03); /* Nge-zoom 3% lebih besar */
+    z-index: 5; /* Agar saat zoom dia di atas kartu lain */
+    
+    /* Box Shadow dengan warna #ffb800 (Accent Color) */
+    box-shadow: 0 5px 15px rgba(255, 184, 0, 0.5), /* Shadow Kuning (Tebal) */
+                0 0 0 3px rgba(255, 255, 255, 0.8); /* Shadow Putih (Outer Border) */
+
+    background-color: #fff; /* Jadikan background putih bersih saat di hover */
+}
+
+.info-card i {
+    color: var(--color-primary); /* Ikon warna Biru Tua */
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+.card-label {
+    display: block;
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.card-value {
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--color-primary); 
+}
+
+/* Styling Ikon Media Sosial (Kotak Rounded) */
+.social-icons-about {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+/* style.css (Perbaikan Sosmed Icon Hover) */
+
+.sosmed-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 10px; 
+    background-color: var(--color-bg-sosmed); 
+    color: var(--color-primary); 
+    
+    /* PROPERTI INI YANG PALING PENTING */
+    font-size: 1.6em; /* Meningkatkan ukuran font secara eksplisit */
+    
+    transition: all 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+}
+
+.sosmed-icon i {
+    /* Pastikan ikon di tengah dan ukurannya tidak terpengaruh oleh margin lain */
+    line-height: 1; 
+}
+
+.sosmed-icon:hover {
+    transform: scale(1.1); /* Nge-zoom lebih besar 10% */
+    background-color: var(--color-accent); 
+    color: #fff;
+    
+    /* Box Shadow dengan warna #ffb800 (Accent Color) */
+    box-shadow: 0 4px 10px rgba(255, 184, 0, 0.6), /* Shadow Kuning */
+                0 0 0 2px rgba(255, 255, 255, 1); /* Shadow Putih (Border Luar) */
+}
+
+/* -------------------------------------- */
+/* Media Queries untuk Responsif */
+/* -------------------------------------- */
+@media (max-width: 900px) {
+    .about-container {
+        flex-direction: column; 
+        align-items: center;
+    }
+    
+    .about-photo-wrapper {
+        /* UBAH ORDER INI */
+        order: 1; /* Diubah dari order: 2 menjadi order: 1 */
+        /* ORDER 1: Akan muncul paling atas */
+        
+        flex: 1 1 100%;
+        max-width: 400px;
+        margin-top: 40px;
+    }
+    
+    .about-content-wrapper {
+        /* UBAH ORDER INI */
+        order: 2; /* Diubah dari order: 1 menjadi order: 2 */
+        /* ORDER 2: Akan muncul di bawah foto */
+        
+        text-align: center;
+        padding: 0 20px;
+    }
+    
+    .main-title-about, .intro-text {
+        text-align: center; /* Judul dan teks di tengah di HP */
+    }
+
+    .social-icons-about {
+        justify-content: center; /* Ikon sosmed di tengah di HP */
+    }
+}
+
+@media (max-width: 600px) {
+    .info-cards-grid {
+        grid-template-columns: 1fr; /* Cards menjadi 1 kolom di HP kecil */
+    }
+}
+
+/* style.css (Styling Form Kontak Baru) */
+
+/* 1. Latar Belakang Section Form */
+/* style.css (Perbaikan Section Form Kontak) */
+
+#contact-form-section {
+    
+    padding-top: 80px; 
+    padding-bottom: 80px; 
+    
+    /* TAMBAHKAN PADDING HORIZONTAL DI SECTION INI */
+    padding-left: 20px; 
+    padding-right: 20px; 
+}
+#contact-form-section .container {
+    /* Hapus padding horizontal bawaan container */
+    padding-left: 0;
+    padding-right: 0;
+    
+    /* Max-width tetap ada agar form tidak terlalu lebar */
+    max-width: 800px; 
+}
+
+/* 1. Pengaturan Container Utama (Menghilangkan Background Putih Form Card) */
+
+/* Target form container (Jika ada background putih yang muncul di screenshot terakhir) */
+.contact-form-new {
+    background: none; /* Hapus background putih card */
+    padding: 0; /* Hapus padding card */
+    border-radius: 0;
+    box-shadow: none; /* Hapus shadow */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 2. Style Judul dan Label (Tetap Putih/Abu-abu Terang) */
+
+.section-title {
+    color: #ffffff !important; 
+}
+
+.contact-form-new label {
+    color: #bdc3c7; /* Teks abu-abu terang */
+    text-transform: uppercase;
+}
+
+/* 3. Style Input, Select, dan Textarea (TAMBAH GARIS KUNING) */
+.contact-form-new input[type="text"],
+.contact-form-new select,
+.contact-form-new textarea {
+    width: 100%;
+    padding: 15px;
+    background-color: #31313a; 
+    color: #f4f7f6;
+    
+    /* REVISI: Tambahkan border warna kuning */
+    border: 1px solid #f1c40f; /* Border tipis warna kuning */
+    
+    border-radius: 6px; 
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+/* Placeholder Style */
+.contact-form-new input::placeholder, 
+.contact-form-new textarea::placeholder,
+.contact-form-new select option[disabled] {
+    color: #95a5a6; 
+}
+
+/* Focus Effect: Berikan efek glow/shadow kuning saat diklik agar lebih responsif */
+.contact-form-new input[type="text"]:focus,
+.contact-form-new select:focus,
+.contact-form-new textarea:focus {
+    background-color: #3d3d47; 
+    /* Hilangkan border asli, ganti dengan shadow kuning tebal */
+    border-color: #f1c40f; 
+    box-shadow: 0 0 8px rgba(241, 196, 15, 0.6); /* Glow kuning saat fokus */
+    outline: none;
+}
+
+/* 4. Style Tombol Submit (Kuning Cerah) */
+.submit-btn-new {
+    width: 100%;
+    padding: 16px;
+    background-color: #f1c40f; 
+    color: #2c3e50; 
+    border: none; /* Border dihilangkan karena tombol sudah kuning */
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px; 
+    transition: background-color 0.3s, transform 0.2s;
+    letter-spacing: 1px;
+}
+
+.submit-btn-new:hover {
+    background-color: #f39c12; 
+    transform: translateY(-1px);
+}
+/* style.css (Aturan untuk Tag Main) */
+
+main {
+    padding: 0; /* Hapus semua padding di tag main */
+    margin: 0; /* Hapus semua margin */
+    width: 100%;
+     background: linear-gradient(
+        /* Gradien dari Kiri ke Kanan */
+        to right, 
+        #a9a97f 0%,       /* Warna 1: Abu-abu Kehijauan Muda (Mulai dari kiri) */
+        #3f3e49 100%      /* Warna 2: Ungu/Abu-abu Gelap (Berakhir di kanan) */
+    );
+}
+
+/* Container Utama */
+.container-tugas {
+    max-width: 1200px; /* Lebar maksimum konten */
+    margin: 0 auto; /* Tengah */
+    padding: 20px;
+    
+    min-height: 100vh; /* Pastikan container mengisi tinggi viewport */
+    box-sizing: border-box; /* Pastikan padding tidak membuat container overflow */
+}
+
+/* Judul Sesuai Contoh Gambar */
+.section-title {
+    color: #fff; /* Asumsi teks putih pada background gelap */
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    
+}
+.section-title::before {
+    content: ' ';
+}
+
+/* Grid Tata Letak */
+.card-grid {
+    display: grid;
+    /* Default: 3 kolom untuk desktop/tablet */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px; /* Jarak antar kotak */
+    padding: 10px;
+}
+
+/* Style Kotak Tugas (Card) */
+.task-card {
+    display: block; /* Agar link memenuhi kotak */
+    text-decoration: none;
+    background-color: #2e2e2e; /* Warna latar belakang kotak, gelap */
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative; /* DIBUTUHKAN untuk penempatan ::after */
+    
+    /* Efek Transisi untuk Smoothness */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; 
+    
+    /* Memberi sedikit border merah seperti pada gambar */
+    border: 1px solid transparent; 
+}
+
+/* Hover Effect: Zoom dan Shadow Putih */
+.task-card:hover {
+    transform: scale(1.05); /* Efek Zoom */
+    z-index: 10; /* Pastikan card yang di-hover di atas */
+    
+    /* Shadow Putih - Ganti warna shadow jika perlu */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); 
+}
+
+/* Untuk meniru border merah pada Mobile Legends (kotak pertama) */
+
+/* Efek hover untuk yang memiliki border merah */
+.task-card:first-child:hover {
+    border: 1px solid #fff; /* Ganti border jadi putih saat hover */
+}
+
+/* ------------------------------------------------------------------ */
+/* --- KODE TAMBAHAN: EFEK KUNING SETENGAH BAGIAN BAWAH (FOOTER) --- */
+/* ------------------------------------------------------------------ */
+
+.task-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Ini yang membuat kuning rata di setengah bagian bawah */
+    height: 50%; 
+     background: linear-gradient(
+        /* Gradien dari Kiri ke Kanan */
+        to right, 
+        #fcfc34 0%,       /* Warna 1: Abu-abu Kehijauan Muda (Mulai dari kiri) */
+        #000 100%      /* Warna 2: Ungu/Abu-abu Gelap (Berakhir di kanan) */
+    );
+    z-index: 0; /* Pastikan lapisan kuning berada di paling belakang */
+}
+
+/* Ini PENTING! Agar semua konten di dalam card (gambar, teks) 
+   terlihat di atas lapisan kuning (z-index: 0) */
+.task-card > * {
+    position: relative;
+    z-index: 1; 
+}
+/* Konten di dalam kotak */
+.card-content {
+    position: relative;
+    padding: 15px; /* Jarak internal */
+}
+
+/* Gambar */
+.card-image {
+    width: 100%;
+    height: 120px; /* Tinggi gambar agar seragam */
+    object-fit: cover; /* Pastikan gambar mengisi area tanpa terdistorsi */
+    border-radius: 4px; /* Sudut sedikit melengkung */
+    margin-bottom: 10px;
+
+    /* --- Penambahan SHADOW PUTIH --- */
+    /* Ganti nilai rgba dan ukurannya sesuai dengan keinginan Anda */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.7); /* Shadow putih terang */
+    
+    /* Untuk memastikan gambar tetap di atas lapisan kuning (jika ada) */
+    position: relative;
+    z-index: 2; /* Lebih tinggi dari z-index: 1 pada konten card lain dan z-index: 0 pada latar kuning */
+}
+
+/* Informasi (Judul dan Subjudul) */
+.card-info {
+    color: #fff; /* Teks default putih */
+    min-height: 40px; /* Memastikan ada ruang untuk info */
+   margin-top: auto
+}
+
+.card-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 3px;
+}
+
+.card-subtitle {
+    display: block;
+    font-size: 0.85rem;
+    color: #3f3e49; /* Warna abu-abu untuk subjudul */
+}
+
+/* --- RESPONSIVE DESIGN --- */
+
+/* Untuk tablet (lebar kurang dari 992px) */
+@media (max-width: 992px) {
+    .card-grid {
+        /* Mengubah menjadi 2 kolom */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .container-tugas {
+        padding: 15px;
+    }
+}
+
+/* Untuk ponsel (lebar kurang dari 576px) */
+@media (max-width: 576px) {
+    .card-grid {
+        /* Mengubah menjadi 1 kolom penuh */
+        grid-template-columns: 1fr; 
+        gap: 10px;
+    }
+    .card-image {
+        height: 100px; /* Tinggi gambar sedikit dikurangi di HP */
+    }
+}
+
+/* Gaya umum untuk kotak pesan */
+#responseMessage {
+    /* ... properti lain ... */
+    max-width: 600px !important; 
+    margin-left: auto !important; 
+    margin-right: auto !important;
+    
+    position: relative !important;
+    z-index: 9999 !important; /* Nilai yang sangat tinggi */
+    
+
+    
+}
+
+.message-success {
+    background-color: #fcfc34 !important; /* Warna kuning dari input kamu */
+    color: #333333 !important; /* Teks hitam agar kontras dengan latar kuning */
+    
+    /* --- BORDER DAN SUDUT MEMBULAT --- */
+    border: 3px solid #1a1a1a !important; /* Border tebal dan gelap */
+    border-radius: 12px !important; /* Sudut membulat */
+    /* --- AKHIR BORDER --- */
+    
+    display: block !important; 
+}
+
+/* Gaya untuk pesan gagal */
+.message-error {
+    background-color: #ffeaea; /* Merah muda */
+    color: #d63333; /* Teks merah gelap */
+    
+    /* Border untuk pesan error */
+    border: 2px solid #d63333; 
+    
+    /* Pastikan muncul dan mengambil alih display */
+    display: block !important; 
+}
+
+#particles-js {
+    position: absolute; /* Posisikan secara absolut relatif terhadap hero-section */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Letakkan di lapisan paling bawah */
+    /* Warna background yang gelap akan lebih bagus untuk efek bintang */
+    /* background-color: #1c1c1c; */ 
+}

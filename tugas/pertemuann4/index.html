@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div style="text-align:center;">
+    <p> Klik pada bagian atau area gambar sesuai dengan koordinat map yang telah ditentukan </p>
+    <img src="badut.jpg" width="145 height=126" alt="gambarku" usemap="#picturemap">
+    <map name="picturemap">
+        <area shape=rect coords="0,0,82,126" href="a.htm" title="bagianA">
+        <area shape=circle coords="90,58,3" href="b.htm" alt=bagianB>
+        <area shape=circle coords="124,58,8" href="c.htm" alt=bagianC>
+     </map>
+ </div>
+     <div style="text-align:center;">
+      <header>Musik gasss</header>
+    <audio controls>
+        <source src="lagucik.mp3" type="audio/mpeg">
+        Browser kamu tidak mendukung audio tag.
+      </audio>
+        
+    <p>deskripsi</p>
+    </div>
+
+      <div style="text-align:center;">
+    <button onclick="tekanPause()">Play/Pause</button>
+    <button onclick="menjadiBig()">Big</button>
+    <button onclick="menjadiSmall()">Small</button>
+    <button onclick="menjadiNormal()">Normal</button>
+    <br><br>
+    <video id="videoku" width="430".
+    <source src="videoplayback.mp4" type="video/mp4">
+    <source src="videoplayback.mp4" type="video/mp4">
+    Browser anda tidak suppport video HTML 5.</video>
+    </div>
+</body>
+<script>
+    var Videoku = document.getElementById("videoku");  
+     function tekanPause() {  
+      if (Videoku.paused)  
+        Videoku.play();  
+      else  
+        Videoku.pause();  
+    }  
+     function menjadiBig() {  
+        Videoku.width = 560; 
+    }  
+     function menjadiSmall() {  
+        Videoku.width = 320;  
+    }  
+     function menjadiNormal() {  
+        Videoku.width = 430;  
+    }  
+    </script>
+</body>
+</html>
