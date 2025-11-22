@@ -54,3 +54,23 @@ document.addEventListener('DOMContentLoaded', function() {
     } // Penutup kurung kurawal if (typeof particlesJS...
     
 }); // Penutup kurung kurawal dan kurung tutup untuk document.addEventListener
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ... [Kode Validasi Form JS di sini, jika ada] ...
+    
+    // ======================================
+    // LOGIKA HAMBURGER MENU
+    // ======================================
+    const toggleButton = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (toggleButton && navLinks) {
+        toggleButton.addEventListener('click', () => {
+            // Mengaktifkan/menonaktifkan menu
+            navLinks.classList.toggle('active');
+            
+            // Optional: Tambahkan animasi pada ikon Hamburger (seperti 'X')
+            toggleButton.classList.toggle('is-open'); 
+        });
+    }
+});
