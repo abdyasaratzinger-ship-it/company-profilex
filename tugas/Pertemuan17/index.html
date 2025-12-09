@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabungan Latihan Perulangan JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #4CAF50; /* Warna hijau */
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #38761D;
+            margin-top: 30px;
+        }
+        .output-box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 25px;
+            background-color: #f0fff0; /* Warna hijau muda untuk kontras */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gabungan Latihan Perulangan (Looping)</h1>
+
+    <script type="text/javascript">
+        // Fungsi untuk menambahkan hasil ke dalam body HTML
+        function displayOutput(title, content) {
+            document.write("<h2>" + title + "</h2>");
+            document.write("<div class='output-box'>");
+            document.write(content);
+            document.write("</div>");
+        }
+        
+        // Variabel untuk menyimpan output sementara
+        var outputLatihan = "";
+
+        // ------------------------------------
+        // Latihan 1: Perulangan FOR
+        // ------------------------------------
+        outputLatihan = "<strong>Menggunakan `for` loop:</strong><br>";
+        for (var i = 0; i <= 5; i++) {
+            outputLatihan += "The number is " + i + "<br>";
+        }
+        displayOutput("Latihan 1: Perulangan FOR", outputLatihan);
+
+
+        // ------------------------------------
+        // Latihan 2: Perulangan WHILE
+        // ------------------------------------
+        outputLatihan = "<strong>Menggunakan `while` loop:</strong><br>";
+        var j = 0; // Inisialisasi
+        while (j <= 5) { // Kondisi
+            outputLatihan += "The number is " + j + "<br>";
+            j++; // Increment
+        }
+        displayOutput("Latihan 2: Perulangan WHILE", outputLatihan);
+
+
+        // ------------------------------------
+        // Latihan 3: Perulangan DO...WHILE
+        // ------------------------------------
+        outputLatihan = "<strong>Menggunakan `do...while` loop:</strong><br>";
+        var k = 0; // Inisialisasi
+        do {
+            outputLatihan += "The number is " + k + "<br>";
+            k++; // Increment
+        }
+        while (k <= 5); // Kondisi
+        displayOutput("Latihan 3: Perulangan DO...WHILE", outputLatihan);
+
+    </script>
+
+</body>
+</html>
