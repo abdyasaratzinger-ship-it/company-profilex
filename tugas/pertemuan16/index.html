@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana Modern</title>
+    <style>
+        /* Gaya CSS untuk tampilan */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f7f6; /* Latar belakang lembut */
+            margin: 0;
+        }
+
+        .calculator-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .input-group label {
+            font-weight: bold;
+            color: #555;
+            width: 70px; /* Lebar label */
+            text-align: left;
+        }
+
+        .input-group input[type="number"],
+        .input-group select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            flex-grow: 1;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .input-group input[type="number"] {
+            width: calc(50% - 10px); /* Membagi lebar untuk Nilai I dan II */
+        }
+        
+        .input-fields {
+            display: flex;
+            gap: 10px; /* Jarak antara input */
+            align-items: center;
+        }
+
+        .input-fields input[type="number"] {
+             width: 40%;
+        }
+        
+        .input-fields select {
+            width: 15%; /* Lebar untuk operator */
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #e9f7ff;
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            text-align: center;
+            min-height: 20px; /* Memastikan ada ruang */
+        }
+
+        #result span {
+            color: #333;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator-container">
+    <h2>Kalkulator Sederhana 🧮</h2>
+
+    <div class="input-fields">
+        <input type="number" id="nilai1" placeholder="Nilai I" value="0" required>
+        <select id="operator">
+            <option value="tambah">+</option>
+            <option value="kurang">-</option>
+            <option value="kali">*</option>
+            <option value="bagi">/</option>
+            <option value="pangkat">^</option>
+        </select>
+        <input type="number" id="nilai2" placeholder="Nilai II" value="0" required>
+    </div>
+
+    <button onclick="hitung()">Hitung</button>
+
+    <div id="result">Hasil: <span>0</span></div>
+    
+    <p style="margin-top: 20px; font-size: 12px; color: #aaa;">Kalkulator Sederhana</p>
+    </div>
+
+<script>
+    function hitung() {
+        // Ambil nilai dari input dan operator
+        const nilai1 = parseFloat(document.getElementById('nilai1').value);
+        const nilai2 = parseFloat(document.getElementById('nilai2').value);
+        const operator = document.getElementById('operator').value;
+        const resultDiv = document.getElementById('result');
+        let hasil;
+
+        // Validasi input
+        if (isNaN(nilai1) || isNaN(nilai2)) {
+            resultDiv.innerHTML = 'Hasil: <span style="color: red;">Masukkan angka yang valid!</span>';
+            return;
+        }
+
+        // Logika perhitungan menggunakan switch case
+        switch (operator) {
+            case 'tambah':
+                hasil = nilai1 + nilai2;
+                break;
+            case 'kurang':
+                hasil = nilai1 - nilai2;
+                break;
+            case 'kali':
+                hasil = nilai1 * nilai2;
+                break;
+            case 'bagi':
+                // Penanganan pembagian dengan nol
+                if (nilai2 === 0) {
+                    resultDiv.innerHTML = 'Hasil: <span style="color: red;">Tidak bisa dibagi dengan nol!</span>';
+                    return;
+                }
+                hasil = nilai1 / nilai2;
+                break;
+            case 'pangkat':
+                hasil = Math.pow(nilai1, nilai2); // Fungsi pangkat di JavaScript
+                break;
+            default:
+                resultDiv.innerHTML = 'Hasil: <span style="color: red;">Operator tidak valid!</span>';
+                return;
+        }
+
+        // --- BAGIAN INI YANG DIMODIFIKASI ---
+        let hasilFormat;
+        
+        // Cek apakah hasil adalah bilangan bulat (integer)
+        if (hasil % 1 === 0) {
+            // Jika bulat (contoh: 10.0), tampilkan tanpa desimal (10)
+            hasilFormat = hasil.toString();
+        } else {
+            // Jika ada desimal (contoh: 3.333...), batasi menjadi dua angka di belakang koma (3.33)
+            hasilFormat = hasil.toFixed(2);
+        }
+        // --- AKHIR MODIFIKASI ---
+
+        // Tampilkan hasil
+        resultDiv.innerHTML = `Hasil: <span>${hasilFormat}</span>`;
+    }
+</script>
+</body>
+</html>
