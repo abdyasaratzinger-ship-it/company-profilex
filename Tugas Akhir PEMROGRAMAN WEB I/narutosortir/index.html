@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shinobi Ranker | Naruto Sorter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <h1 class="naruto-logo">
+                <img src="img/logo3.png" alt="Naruto" class="logo-img">
+                <span>RANKER</span>
+            </h1>
+            
+            <button id="music-toggle" class="header-mute-btn" onclick="toggleMusic()">
+                <span id="music-icon">🔊</span>
+            </button>
+        </div>
+    </header>
+
+    <audio id="bgm-naruto" loop>
+        <source src="audio/naruto-bgm.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <div id="page-landing">
+            <h1 class="naruto-font">Selamat Datang Di Naruto Sorter!</h1>
+            <p>Sebuah situs web Naruto buatan penggemar untuk mengurutkan karakter favorit Anda.</p>
+
+            <div class="filter-section">
+                <div class="filter-group">
+                    <label>Status</label>
+                    <select id="filter-type" class="naruto-select">
+                        <option value="all">Semua Member (Shinobi & Villains)</option> 
+                        <option value="Shinobi">Shinobi</option>
+                        <option value="Villains">Villains</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Gender</label>
+                    <div class="gender-toggle">
+                        <input type="radio" name="gender" id="all-gender" value="all" checked>
+                        <label for="all-gender">Semua</label>
+
+                        <input type="radio" name="gender" id="male" value="Cowok">
+                        <label for="male">Cowok</label>
+
+                        <input type="radio" name="gender" id="female" value="Cewek">
+                        <label for="female">Cewek</label>
+                        
+                        <div class="slider"></div>
+                    </div>
+                </div>
+
+                <button class="btn-start" onclick="mulaiSortir()">MULAI SORTING!</button>
+            </div>
+        </div>
+
+        <div id="page-battle" style="display: none;">
+            <h2 class="naruto-font battle-title">PILIH FAVORIT KARAKTERMU</h2>
+            
+            <div class="battle-container">
+                <div class="ninja-card" onclick="pilih('kiri')">
+                    <div id="label-kiri" class="card-tag">STATUS</div>
+                    <div class="img-container">
+                        <img id="img-kiri" src="img/placeholder.jpg">
+                    </div>
+                    <div class="info-container">
+                        <h3 id="nama-kiri">Nama Ninja</h3>
+                        <span class="active-badge">ACTIVE</span>
+                    </div>
+                </div>
+
+                <div class="vs-divider">OR</div>
+
+                <div class="ninja-card" onclick="pilih('kanan')">
+                    <div id="label-kanan" class="card-tag">STATUS</div>
+                    <div class="img-container">
+                        <img id="img-kanan" src="img/placeholder.jpg">
+                    </div>
+                    <div class="info-container">
+                        <h3 id="nama-kanan">Nama Ninja</h3>
+                        <span class="active-badge">ACTIVE</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-battle tie" onclick="pilih('seri')">SERI</button>
+                <button class="btn-battle undo" onclick="undoPilihan()">BATALKAN PILIHAN TERAKHIR</button>
+            </div>
+
+            <div class="progress-section">
+                <p>PROSES PENGURUTAN</p>
+                <div class="progress-bg">
+                    <div id="progress-fill"></div>
+                </div>
+                <span id="progress-text">0%</span>
+            </div>
+        </div>
+
+        <div id="page-result" style="display: none;">
+            <h2 class="naruto-font">HASIL ANDA!</h2>
+            <div id="ranking-list" class="ranking-container">
+                </div>
+            <button class="btn-start" onclick="location.reload()">MULAI PENYORTIRAN BARU</button>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p class="footer-text">&copy; Tugas Akhir PEMROGRAMAN WEB I | Sistem Voting/Polling</p>
+            <p class="footer-desc">Abdyasya Ratzinger Kahulubi - 231011400896</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
